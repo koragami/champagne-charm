@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react";
 import "./Section1.css";
 
 export default function Section1() {
-  const container = useRef();
+  const container = useRef<HTMLElement>(null);
 
   useGSAP(
     () => {
