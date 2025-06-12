@@ -4,13 +4,12 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 export default function Navbar() {
-  const container = useRef(null);
+  const container = useRef<HTMLElement>(null);
 
+  // The 'container' is passed directly into the hook
   useGSAP(
     () => {
-      // ✅ FIX: Added ".burger-wrapper" to the selector string.
-      // GSAP will now apply this animation to all elements matching
-      // either class within the scoped container.
+      // GSAP animations go here
       gsap.from(".business__name-title, .burger-wrapper", {
         y: -50,
         opacity: 0,
@@ -19,9 +18,10 @@ export default function Navbar() {
       });
     },
     { scope: container }
-  );
+  ); // The scope is defined here
 
   return (
+    // The ref is attached to the main element
     <nav ref={container}>
       <header className="business__header">
         <h1 className="business__name-title">

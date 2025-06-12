@@ -7,9 +7,10 @@ import "./Section1.css";
 export default function Section1() {
   const container = useRef<HTMLElement>(null);
 
+  // The 'container' is passed directly into the hook
   useGSAP(
     () => {
-      // 1. Animate the header from the top (existing animation)
+      // GSAP animations go here
       gsap.from(".section1__header", {
         y: -50,
         opacity: 0,
@@ -17,36 +18,34 @@ export default function Section1() {
         ease: "power2.out",
       });
 
-      // ✅ 2. Animate #box1 and #box2 from the left
       gsap.from("#box1, #box2", {
-        x: -100, // Start 100px to the left
+        x: -100,
         opacity: 0,
         duration: 1.2,
         ease: "power2.out",
-        stagger: 0.3, // Animate them 0.3s after one another
-        delay: 0.5, // Start this animation 0.5s after the hook runs
+        stagger: 0.3,
+        delay: 0.5,
       });
 
-      // ✅ 3. Animate #box3 from the right
       gsap.from("#box3", {
-        x: 100, // Start 100px to the right
+        x: 100,
         opacity: 0,
         duration: 1.2,
         ease: "power2.out",
-        delay: 0.5, // Start at the same time as the other boxes
+        delay: 0.5,
       });
     },
     { scope: container }
-  );
+  ); // The scope is defined here
 
   return (
+    // The ref is attached to the main element
     <section className="section1" ref={container}>
       <header>
         <h3 className="section1__header">
           Turning <br /> dreams into <br /> unforgettable <br /> moments.
         </h3>
       </header>
-      {/* The container for your animated boxes */}
       <div id="container">
         <span id="box1"></span>
         <span id="box2"></span>
