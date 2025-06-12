@@ -1,0 +1,50 @@
+@media only screen and (max-width: 1000px) {
+  .alert__bar::after {
+    display: none;
+  }
+}
+
+.alert__bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  height: 5vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  animation: slideDown 2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.alert__bar p {
+  font-size: clamp(0.875rem, 0.75rem + 0.5vw, 1.25rem);
+  font-family: "Open Sans", sans-serif;
+  color: #fff;
+  text-wrap: nowrap;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.alert__bar::after {
+  content: "→";
+  font-size: 1.2em;
+  color: #fff;
+  position: absolute;
+  right: 1em;
+  cursor: pointer;
+}
+
+.alert__bar::after:hover {
+  color: red;
+}

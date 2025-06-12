@@ -1,0 +1,98 @@
+/* --- General Nav Styles --- */
+nav {
+  margin: 1em;
+  width: calc(100% - 2em); /* Adjust width to account for margin */
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  z-index: 1;
+}
+
+/* --- Text Styles --- */
+.champagne,
+.charm {
+  text-transform: uppercase;
+  font-optical-sizing: auto;
+  letter-spacing: -2.2px;
+  z-index: 1;
+}
+
+.champagne {
+  font-size: clamp(1.5rem, 1.5rem + 0.5vw, 3rem);
+  font-weight: 600;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+.charm {
+  font-weight: lighter;
+}
+
+/* --- Burger Menu Styles --- */
+
+/* Wrapper for the clickable burger icon.
+   It's a flex container to help center the hamburger line. */
+.burger-wrapper {
+  padding-top: 7px;
+  cursor: pointer;
+  width: 50px;
+  height: 40px; /* Provides a larger, user-friendly clickable area */
+  position: relative;
+  display: flex;
+  align-items: center; /* Vertically centers the hamburger line */
+  z-index: 1001;
+}
+
+/* The three lines of the hamburger */
+.hamburger {
+  background: black;
+  width: 20px; /* Adjusted for a cleaner look */
+  height: 2px;
+  position: relative; /* Changed from absolute for better flex alignment */
+  transition: background 10ms 300ms ease;
+}
+
+.hamburger:before,
+.hamburger:after {
+  transition: top 300ms 350ms ease, transform 300ms 50ms ease;
+  position: absolute;
+  background: black;
+  width: 24px;
+  height: 2px;
+  content: "";
+}
+
+.hamburger:before {
+  top: -8px; /* Increased spacing for a clearer look */
+}
+
+.hamburger:after {
+  top: 8px; /* Increased spacing for a clearer look */
+}
+
+/* --- Burger Menu Active State (when checkbox is checked) --- */
+
+/* This targets the .burger-wrapper when the preceding sibling checkbox is checked */
+.menu-trigger:checked ~ .burger-wrapper .hamburger {
+  background: transparent; /* Middle bar disappears */
+}
+
+.menu-trigger:checked ~ .burger-wrapper .hamburger:before,
+.menu-trigger:checked ~ .burger-wrapper .hamburger:after {
+  transition: top 300ms 50ms ease, transform 300ms 350ms ease;
+  top: 0;
+}
+
+.menu-trigger:checked ~ .burger-wrapper .hamburger:before {
+  transform: rotate(45deg); /* Top bar rotates into an 'X' */
+}
+
+.menu-trigger:checked ~ .burger-wrapper .hamburger:after {
+  transform: rotate(-45deg); /* Bottom bar rotates into an 'X' */
+}
+
+/* Utility class to hide the checkbox itself */
+.hidden {
+  display: none;
+}
