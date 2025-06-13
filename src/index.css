@@ -14,6 +14,7 @@
 }
 
 body {
-  font-family: "WF Visual Sans";
   background-color: #f8f8f8;
+  font-family: sans-serif;
+  overflow-x: hidden;
 }
