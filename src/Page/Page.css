@@ -1,27 +1,59 @@
-.section1 {
-  width: 100vw;
-  display: flex;
-  margin: 1.2em;
-  padding-top: 1.4em;
+/* General Body Styles for Centering */
+body {
+  margin: 0;
+  font-family: sans-serif;
+  overflow-x: hidden; /* Prevents horizontal scrollbars */
+  display: grid; /* Use grid to center the main wrapper */
+  place-items: center; /* This perfectly centers the child (.page-wrapper) */
+  min-height: 100vh;
+}
+
+/* New: A wrapper for all content to constrain its width and center it */
+.page-wrapper {
+  width: 85%; /* Set the consistent width for the entire page content */
+  max-width: 1200px; /* Optional: A max-width for very large screens */
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+/* Helper class for consistent section styling and centering */
+.centered-section {
+  width: 100%; /* Sections now take up 100% of the .page-wrapper width */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.4em 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* --- General Text Styles --- */
+p {
+  line-height: 1.4em;
+  font-weight: 300;
+}
+
+/* --- Section 1: Header and Grid --- */
+.section1 {
+  /* Inherits from .centered-section */
+  margin: 1.2em 0;
 }
 
 .section1__header {
-  display: flex;
   text-transform: uppercase;
   font-size: 2.2em;
   font-weight: 300;
-  font-family: sans-serif;
+  width: 100%; /* Fills the .page-wrapper */
 }
 
 #container {
   margin-top: 2.5em;
   height: 60vh;
-  width: 85vw;
+  width: 100%; /* Fills the .page-wrapper */
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: calc(50% - 12.5px) calc(50% - 12.5px); /* <-- Adjust row height */
+  grid-template-rows: calc(50% - 12.5px) calc(50% - 12.5px);
   gap: 25px;
 }
 
@@ -59,18 +91,12 @@
 
 #about__section1 {
   margin-top: 1.4em;
-  width: 88vw;
-}
-
-#about__section1 p {
-  line-height: 1.4em;
-  font-family: sans-serif;
-  font-weight: 300;
+  width: 100%; /* Fills the .page-wrapper */
 }
 
 #hire__us {
   height: 5vh;
-  width: 85vw;
+  width: 100%; /* Fills the .page-wrapper */
   font-weight: 500;
   background: #000;
   color: #fff;
@@ -81,28 +107,30 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   transition: background 0.4s ease-in-out;
+  cursor: pointer;
 }
 
 #hire__us:hover {
   background: #000000d1;
 }
 
+/* --- Section 2 --- */
 .section2 {
+  /* Inherits from .centered-section */
   margin-top: 4em;
 }
 
 .section2__header {
   font-size: 2.2em;
   text-align: center;
-  font-family: sans-serif;
   font-weight: 300;
   text-transform: uppercase;
 }
 
 #section2__image {
-  margin: 1em auto;
+  margin-top: 1em;
   height: 30vh;
-  width: 85vw;
+  width: 100%; /* Fills the .page-wrapper */
   background-image: url(//static.showit.co/800/VGaDiYjJRzOo7oxGtiE0Kw/255068/img_3421.jpg);
   background-position: center;
   background-size: cover;
@@ -112,25 +140,18 @@
 .section2__h3 {
   font-size: 1.4em;
   text-align: center;
-  font-family: sans-serif;
   font-weight: 300;
-  margin: 1.2em auto;
+  margin: 1.2em 0;
 }
 
 #section2__about {
-  width: 85vw;
-  margin: 1.2em auto;
-}
-
-#section2__text {
-  line-height: 1.4em;
-  font-family: sans-serif;
-  font-weight: 300;
+  width: 100%; /* Fills the .page-wrapper */
+  margin-top: 1.2em;
 }
 
 .learn__more {
   height: 5vh;
-  width: 85vw;
+  width: 100%; /* Fills the .page-wrapper */
   font-weight: 500;
   background: #000;
   color: #fff;
@@ -141,40 +162,35 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   transition: background 0.4s ease-in-out;
+  cursor: pointer;
 }
 
 .learn__more:hover {
   background: #000000d1;
 }
 
+/* --- Section 3 --- */
 .section3 {
-  margin: auto;
-  height: 50vh;
+  /* Inherits from .centered-section */
+  height: auto; /* Let content define the height */
+  min-height: 50vh;
 }
 
 .section3__h3 {
   font-size: 1.4em;
   text-align: center;
-  font-family: sans-serif;
   font-weight: 300;
-  margin: 1.2em auto;
-}
-
-#section3__text {
-  line-height: 1.4em;
-  font-family: sans-serif;
-  font-weight: 300;
-  text-align: center;
+  margin: 1.2em 0;
 }
 
 #section3__about {
-  width: 85vw;
-  margin: 1.2em auto;
+  width: 100%; /* Fills the .page-wrapper */
+  margin: 1.2em 0;
 }
 
 #section3__image {
-  width: 85vw;
-  margin: auto;
+  width: 100%; /* Fills the .page-wrapper */
+  margin-top: 1.2em;
 }
 
 #section3__image img {
@@ -185,27 +201,23 @@
   object-position: center;
 }
 
+/* --- Section 4: Email & Form --- */
+.section4 {
+  /* This can be a new wrapper or you can apply .centered-section to the body */
+}
+
 #email__icon {
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin-bottom: 1.2em;
 }
 
 #email__icon img {
-  display: flex;
   height: 50px;
   width: 100px;
 }
 
 .get__weekly__emails {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 85vw;
+  width: 100%; /* Fills the .page-wrapper */
   font-size: 1.4em;
-  margin: auto;
   text-align: center;
   margin-bottom: 1em;
 }
@@ -213,30 +225,24 @@
 .section4__h3 {
   font-size: 2.4em;
   text-align: center;
-  font-family: sans-serif;
   font-weight: 300;
 }
 
 .section4__text {
   padding-top: 1.2em;
-  width: 85vw;
-  margin: auto;
+  width: 100%; /* Fills the .page-wrapper */
   text-align: center;
-  font-family: sans-serif;
   font-weight: 300;
   line-height: 1.4em;
 }
 
 #references {
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin-top: 1.4em;
 }
 
 #references ul {
   list-style: none;
+  padding: 0;
   text-align: center;
 }
 
@@ -246,7 +252,6 @@
 
 #references ul li a {
   color: #000;
-  font-family: sans-serif;
   font-weight: 600;
   text-decoration: none;
   transition: 0.4s ease;
@@ -259,49 +264,47 @@
 
 form {
   padding-top: 1.5em;
-  width: 85vw;
+  width: 100%; /* Fills the .page-wrapper */
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
   flex-direction: column;
+  align-items: center;
 }
 
-#name__input {
+#name__input,
+#email__input {
   padding: 5px 16px;
-  border-style: solid;
-  border-color: #000;
-  width: 85vw;
+  border: 1px solid #000;
+  width: 100%; /* Make input take full width of the form */
   height: 5vh;
   border-radius: 5px;
+  box-sizing: border-box;
 }
 
 #email__input {
   margin-top: 1.2em;
-  padding: 5px 16px;
-  border-style: solid;
-  border-color: #000;
-  width: 85vw;
-  height: 5vh;
-  border-radius: 5px;
 }
 
 #sign__up {
   margin-top: 1.5em;
   padding: 5px 16px;
-  border-style: solid;
-  width: 85vw;
+  border-style: none;
+  width: 100%;
   height: 5vh;
   border-radius: 25px;
   background-color: #000;
   text-transform: uppercase;
   color: #fff;
-  font-family: sans-serif;
   font-weight: 600;
+  cursor: pointer;
 }
 
+/* --- Footer --- */
 footer {
   margin-top: 3em;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .footer__header {
@@ -313,47 +316,38 @@ footer {
 .footer__container {
   display: flex;
   justify-content: space-between;
-  width: 100vw;
-  height: 40vh;
+  align-items: flex-start;
+  width: 100%; /* Fills the .page-wrapper */
+  min-height: 30vh;
   border-top: 1px solid #000;
   margin-top: 1.5em;
+  padding-top: 1.4em;
+  box-sizing: border-box;
 }
 
 .left__of__footer,
 .right__of__footer {
-  position: absolute;
-  margin-top: 1.4em;
+  text-align: left; /* Changed back to left for the left column */
+}
+.right__of__footer {
+  text-align: right; /* Changed back to right for the right column */
 }
 
-.left__of__footer {
-  left: 0;
+.left__of__footer ul,
+.right__of__footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .left__of__footer ul li,
-.right__of__footer {
+.right__of__footer ul li {
   padding: 0.5em;
-  list-style: none;
 }
 
 .left__of__footer ul li a,
-.right__of__footer {
+.right__of__footer a {
   text-decoration: none;
   color: #000;
   font-size: 1.1em;
-}
-
-.right__of__footer {
-  right: 0;
-  text-align: center;
-}
-
-.right__of__footer ul li {
-  list-style: none;
-  padding: 0.5em;
-}
-
-.right__of__footer ul li,
-a {
-  color: #000;
-  list-style: none;
 }
