@@ -1,0 +1,8 @@
+Sat June 14 7:25
+
+- Changed Photographs from links to pngs & svgs
+- Sections Folder disgarded for complexity reasons for simplity I made a Page folder with the entire page and detailed section sections.
+- Fixed animation and added more animation complexity using GSAP Timeline with ScrollTrigger & Watcher etc
+- Added a Footer section etc
+
+* Most changes I did was adding page contents and animation and shrinking code due to simplity reasons nothing huge

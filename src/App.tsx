@@ -1,7 +1,7 @@
 import Alertbar from "./Components/Alertbar/Alertbar";
 import Navbar from "./Components/Navbar/Navbar";
 import Menu from "./Components/Menu/Menu";
-import Section1 from "./Sections/Section1/Section1";
+import Page from "./Page/Page";
 
 export default function App() {
   return (
@@ -9,7 +9,7 @@ export default function App() {
       <Alertbar />
       <Navbar />
       <Menu />
-      <Section1 />
+      <Page />
     </>
   );
 }
