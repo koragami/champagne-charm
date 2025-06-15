@@ -4,10 +4,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import "./Page.css";
 
-// Your CSS imports remain the same
-// import "./page.css";
-
-// Register the ScrollTrigger plugin with GSAP
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Page() {
@@ -16,7 +12,6 @@ export default function Page() {
   useGSAP(
     () => {
       // --- 1. Initial Loading Animation for Section 1 ---
-      // This timeline runs once when the component mounts
       const initialLoadTl = gsap.timeline();
       initialLoadTl
         .from(".section1__header", {
@@ -34,17 +29,12 @@ export default function Page() {
             ease: "power2.out",
             stagger: 0.3,
           },
-          "-=1" // Start this animation 1s before the previous one ends
+          "-=1"
         )
         .from(
           "#box3",
-          {
-            x: 100,
-            opacity: 0,
-            duration: 1.2,
-            ease: "power2.out",
-          },
-          "<" // Start at the same time as the previous animation
+          { x: 100, opacity: 0, duration: 1.2, ease: "power2.out" },
+          "<"
         )
         .from(
           ["#about__section1__text", "#hire__us"],
@@ -59,53 +49,23 @@ export default function Page() {
         );
 
       // --- 2. Pin and Reverse Animation for Section 1 ---
-      // This timeline is controlled by scrolling
       const pinSection1Tl = gsap.timeline({
         scrollTrigger: {
           trigger: ".section1",
-          scrub: 1, // Smoothly scrub through the animation as you scroll
-          pin: true, // Pin the section while the animation is playing
-          start: "top top", // Start the animation when the top of the section hits the top of the viewport
-          // By removing the 'end' property, the pin will last exactly as long as the timeline's animation
+          scrub: 1,
+          pin: true,
+          start: "top top",
         },
       });
-
-      // Add animations to the timeline to reverse the initial load animation
       pinSection1Tl
         .to(
           ["#about__section1__text", "#hire__us"],
-          {
-            y: 50,
-            opacity: 0,
-            stagger: 0.1,
-          },
-          0 // Start at the beginning of the timeline
+          { y: 50, opacity: 0, stagger: 0.1 },
+          0
         )
-        .to(
-          "#box3",
-          {
-            x: 100,
-            opacity: 0,
-          },
-          "<" // Start at the same time
-        )
-        .to(
-          ["#box1", "#box2"],
-          {
-            x: -100,
-            opacity: 0,
-            stagger: 0.1,
-          },
-          "<"
-        )
-        .to(
-          ".section1__header",
-          {
-            y: -50,
-            opacity: 0,
-          },
-          "<"
-        );
+        .to("#box3", { x: 100, opacity: 0 }, "<")
+        .to(["#box1", "#box2"], { x: -100, opacity: 0, stagger: 0.1 }, "<")
+        .to(".section1__header", { y: -50, opacity: 0 }, "<");
 
       // --- 3. Pin and Fade Out for Section 2 ---
       const pinSection2Tl = gsap.timeline({
@@ -113,12 +73,9 @@ export default function Page() {
           trigger: ".section2",
           scrub: 1,
           pin: true,
-          start: "-75px top",
-          // The pin will last exactly as long as the timeline's animation
+          start: "top top", // Simplified start position
         },
       });
-
-      // Animate all direct children of section2's main containers
       pinSection2Tl.to(
         [
           ".section2__header",
@@ -129,7 +86,7 @@ export default function Page() {
         {
           opacity: 0,
           y: -30,
-          stagger: 0.1, // Adjusted stagger for a slightly quicker fade out
+          stagger: 0.1,
         }
       );
 
@@ -139,19 +96,29 @@ export default function Page() {
           trigger: ".section3",
           scrub: 1,
           pin: true,
-          start: "-100 top",
-          // The pin will last exactly as long as the timeline's animation
+          start: "top top", // Simplified start position
         },
       });
-
       pinSection3Tl.to(".section3 > *", {
-        // Target all direct children of section3
         opacity: 0,
         y: -30,
-        stagger: 0.1, // Adjusted stagger
+        stagger: 0.1,
       });
+
+      // KEY FIX: Refresh ScrollTrigger after a short delay
+      // This gives the browser time to render images and finalize the layout,
+      // then forces ScrollTrigger to recalculate all of its start/end positions.
+      // This is the most critical step for mobile reliability.
+      const refreshTimeout = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 500); // A 500ms delay is usually safe. Adjust if needed.
+
+      // Cleanup function to clear the timeout when the component unmounts
+      return () => {
+        clearTimeout(refreshTimeout);
+      };
     },
-    { scope: main } // Scope the animations to the main container
+    { scope: main } // Keep the scope to the main container
   );
 
   // The JSX structure remains the same, but is now wrapped in a main div with a ref
@@ -167,16 +134,16 @@ export default function Page() {
           <div id="container">
             <span id="box1">
               <img
-                src="src/Pictures/First Image.png"
+                src="public/Pictures/First Image.png"
                 alt="Bride & Groom Kissing"
               />
             </span>
             <span id="box2">
-              <img src="src/Pictures/Second Image.png" alt="Flowers" />
+              <img src="public/Pictures/Second Image.png" alt="Flowers" />
             </span>
             <span id="box3">
               <img
-                src="src/Pictures/Third image.png"
+                src="public/Pictures/Third image.png"
                 alt="Father seeing bride groom off"
               />
             </span>

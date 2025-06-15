@@ -202,11 +202,6 @@ p {
   object-position: center;
 }
 
-/* --- Section 4: Email & Form --- */
-.section4 {
-  /* This can be a new wrapper or you can apply .centered-section to the body */
-}
-
 #email__icon {
   margin-bottom: 1.2em;
 }
