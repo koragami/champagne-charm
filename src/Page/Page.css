@@ -41,6 +41,7 @@ p {
 }
 
 .section1__header {
+  margin-top: 1.7em;
   text-transform: uppercase;
   font-size: 2.2em;
   font-weight: 300;
